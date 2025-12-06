@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  minecraft:
+    container_name: minecraft-server
+    image: itzg/minecraft-server:latest
+    # Публикуем порт 25565 на хост-машине
+    ports:
+      - "25565:25565"
+    environment:
+      EULA: "TRUE"
+      MEMORY: 2G
+    volumes:
+      - minecraft-data:/data
+    restart: unless-stopped
+
+volumes:
+  minecraft-data:
